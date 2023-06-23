@@ -1,4 +1,6 @@
+Events for wield item switching
 
+Provides callbacks for `on_select`, `on_step` and `on_deselect` on wielded items
 
 # Api
 
