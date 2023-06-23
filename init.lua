@@ -30,16 +30,16 @@ minetest.register_globalstep(function()
             if previous_itemstack then
                 local previous_item_def = minetest.registered_items[previous_itemstack:get_name()]
                 if previous_item_def then
-                    if type(previous_item_def.on_blur) == "function" then
-                        previous_item_def.on_blur(previous_itemstack, player)
+                    if type(previous_item_def.on_deselect) == "function" then
+                        previous_item_def.on_deselect(previous_itemstack, player)
                     end
                 end
             end
 
             -- new item
             if current_item_def then
-                if type(current_item_def.on_focus) == "function" then
-                    current_item_def.on_focus(itemstack, player)
+                if type(current_item_def.on_select) == "function" then
+                    current_item_def.on_select(itemstack, player)
                 end
             end
         else
