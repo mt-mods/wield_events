@@ -22,6 +22,10 @@ minetest.register_tool("my_mod:my_tool", {
 })
 ```
 
+# Demo
+
+* `pick_and_place` https://github.com/BuckarooBanzay/pick_and_place/blob/master/place_tool.lua
+
 # License
 
 MIT
