@@ -2,6 +2,10 @@ Events for wield item switching
 
 Provides callbacks for `on_select`, `on_step` and `on_deselect` on wielded items
 
+![luacheck](https://github.com/mt-mods/technic/workflows/luacheck/badge.svg)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![ContentDB](https://content.minetest.net/packages/mt-mods/wield_events/shields/downloads/)](https://content.minetest.net/packages/mt-mods/wield_events/)
+
 # Api
 
 ```lua
