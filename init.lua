@@ -65,7 +65,6 @@ minetest.register_globalstep(function()
                 for _, func in ipairs(on_select) do
                     func(itemstack, player)
                 end
-
             end
         else
             -- same item
