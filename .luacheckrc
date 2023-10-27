@@ -1,4 +1,3 @@
-
 read_globals = {
 	-- Stdlib
 	string = {fields = {"split", "trim"}},
@@ -9,4 +8,8 @@ read_globals = {
 	"dump", "dump2",
 	"VoxelArea",
 	"minetest"
+}
+
+globals = {
+	"wield_events"
 }

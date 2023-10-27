@@ -8,6 +8,7 @@ Provides callbacks for `on_select`, `on_step` and `on_deselect` on wielded items
 
 # Api
 
+## Item parameter
 ```lua
 minetest.register_tool("my_mod:my_tool", {
     description = "My tool",
@@ -24,6 +25,21 @@ minetest.register_tool("my_mod:my_tool", {
         -- called when the player switches away from the item
     end
 })
+```
+
+## Global callback
+```lua
+wield_events.register_on_select(function(itemstack, player)
+    -- called when the player switches any item
+end)
+
+wield_events.register_on_step(function(itemstack, player)
+    -- called on every globalstep while any item is selected
+end)
+
+wield_events.register_on_deselect(function(itemstack, player)
+    -- called when the player switches away from any item
+end)
 ```
 
 # Demo
