@@ -1,3 +1,4 @@
+wield_events = {}
 
 -- playername -> key
 local last_wielded_key = {}
@@ -11,6 +12,21 @@ local function get_key(itemstack, itemindex)
         itemstack:get_count() .. "/" ..
         itemstack:get_description() .. "/" ..
         itemindex
+end
+
+-- on_* callbacks
+local on_select, on_deselect, on_step = {}, {}, {}
+
+function wield_events.register_on_select(func)
+    table.insert(on_select, func)
+end
+
+function wield_events.register_on_deselect(func)
+    table.insert(on_deselect, func)
+end
+
+function wield_events.register_on_step(func)
+    table.insert(on_step, func)
 end
 
 -- wield-check loop
@@ -33,6 +49,10 @@ minetest.register_globalstep(function()
                     if type(previous_item_def.on_deselect) == "function" then
                         previous_item_def.on_deselect(previous_itemstack, player)
                     end
+
+                    for _, func in ipairs(on_deselect) do
+                        func(previous_itemstack, player)
+                    end
                 end
             end
 
@@ -41,6 +61,10 @@ minetest.register_globalstep(function()
                 if type(current_item_def.on_select) == "function" then
                     current_item_def.on_select(itemstack, player)
                 end
+
+                for _, func in ipairs(on_select) do
+                    func(itemstack, player)
+                end
             end
         else
             -- same item
@@ -48,6 +72,9 @@ minetest.register_globalstep(function()
                 if type(current_item_def.on_step) == "function" then
                     current_item_def.on_step(itemstack, player)
                 end
+            end
+            for _, func in ipairs(on_step) do
+                func(itemstack, player)
             end
         end
 
